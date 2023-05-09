@@ -5,7 +5,7 @@ git checkout devel
 git pull origin devel
 
 # Get the latest commit hash, and check if we've already built from that commit 
-LASTHASH=`git --no-pager log --pretty=oneline -n1 | cut -d' ' -f 1 | xargs -I {} grep {} ./logs/previous_build_hashes.txt`
+LASTHASH=`git --no-pager log --pretty=oneline -n1 | grep 'build:' | cut -d' ' -f 1 | xargs -I {} grep {} ./logs/previous_build_hashes.txt`
 
 # LASTHASH will be the empty string if we haven't built from this commit 
 echo $LASTHASH
