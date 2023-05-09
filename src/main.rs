@@ -1,7 +1,8 @@
 use rand::{self, Rng};
 use time::Instant;
 
-
+// This function computes the Collatz sequence of numbers. This is sometimes also known as 
+// the "hailstone sequence" 
 fn collatz(mut n: u32) -> Vec<u32> {
 
     let mut collatz_sequence = vec![n]; // initialize the vector with the starting number
@@ -27,5 +28,8 @@ fn main() {
     let t1 = Instant::now();
 
     let collatz_seq = collatz(starting_num);
-    println!("{:?}, {:?}", collatz_seq, t1.elapsed());
+
+    let t2 = Instant::now();
+
+    println!("{:?}, {:?}", collatz_seq, t2 - t1);
 }
