@@ -7,10 +7,8 @@
 #SBATCH --mem=4G
 #SBATCH --job-name collatz-sim
 #SBATCH --output logs/collatz-sim-%j.out
-#SBATCH --error logs/collatz-sim-%j.out
-#SBATCH --constraint cascade
+#SBATCH --error logs/collatz-sim-%j.err
 
+module load rust/1.69.0
 
-module load rust/1.64.0
-
-./script/rebuild_if_needed.sh
+cargo run --release
