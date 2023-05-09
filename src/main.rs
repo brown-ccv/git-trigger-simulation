@@ -1,7 +1,8 @@
+use rand::{self, Rng};
+use time::Instant;
 
 
-
-fn collatz(mut n: i32) -> Vec<i32> {
+fn collatz(mut n: u32) -> Vec<u32> {
 
     let mut collatz_sequence = vec![n]; // initialize the vector with the starting number
     
@@ -20,7 +21,11 @@ fn collatz(mut n: i32) -> Vec<i32> {
 
 
 fn main() {
-    let starting_num = 54321;
+    let mut rng = rand::thread_rng();
+    let starting_num: u32 = rng.gen_range(1..100_000_000);
+   
+    let t1 = Instant::now();
+
     let collatz_seq = collatz(starting_num);
-    println!("{:?}", collatz_seq);
+    println!("{:?}, {:?}", collatz_seq, t1.elapsed());
 }
