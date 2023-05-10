@@ -1,5 +1,6 @@
 // This function computes the Collatz sequence of numbers. This is sometimes also known as 
-// the "hailstone sequence" 
+// the "hailstone sequence". Starting from any number `n`, by applying the function below,
+// we gnerate a sequence that eventually ends with `n` equal to 1.
 
 pub fn collatz(mut n: u32) -> Vec<u32> {
 
