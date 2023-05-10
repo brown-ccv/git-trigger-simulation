@@ -25,17 +25,17 @@ We're going to begin by cloning this repository. We will then proceed to make a 
   git clone https://github.com/brown-ccv/git-trigger-simulation.git
   ```
 
-  #### 3. Make a small edit to the `README.md` file using the commands below: 
+  #### 3. Create a small file using the commands below: 
   ```
   cd git-trigger-simulation
   git checkout devel
-  echo 'foo' >> README.md
+  echo 'foo' > deleteme.txt 
   ```
 
   #### 4. Commit the changes to the `devel` branch and push them back to GitHub using the commands below:
   ```
   git add -A
-  git commit -m "build: updated the readme file"
+  git commit -m "build: add new deleteme file"
   git push origin devel
   ```
 
