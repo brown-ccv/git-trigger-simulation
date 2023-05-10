@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-. scripts/git_pull_latest.sh 
+git checkout devel
+git pull origin devel; echo "git pull exit code: ${?}"
 
 NUM_COMMITS_TO_CHECK=20
 
