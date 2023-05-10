@@ -17,33 +17,35 @@ This example is meant to be used on the Oscar supercomputer at Brown. However, i
   4. Rust 1.69.0
 
 # Instructions
-We're going to begin by cloning this repository. We will then create a new feature branch called `add-small-file` and proceed to make a small change. Next, we commit the change to our new branch and push to GitHub. After that, we submit a Pull Request on GitHub from `add-small-file` to the `devel` branch. Once that PR is merged into the `devel` branch, we will manually run the `scripts/rebuild_if_needed.sh` script. This should trigger a build and model run executed by SLURM. 
+We're going to begin by forking this repository to our personal GitHub. Then, we'll clone that repo to Oscar. We will then create a new feature branch called `add-small-file` and proceed to make a small change. Next, we commit the change to our new branch and push to GitHub. After that, we submit a Pull Request on GitHub from `add-small-file` to the `devel` branch. Once that PR is merged into the `devel` branch, we will manually run the `scripts/rebuild_if_needed.sh` script. This should trigger a build and model run executed by SLURM. 
 
+  #### 1. Fork this repository to your personal GitHub
 
-  #### 1. Log on to Oscar and open a terminal session.
+  #### 2. Log on to Oscar and open a terminal session.
   
-  #### 2. Clone this repo using the command below: 
+  #### 3. Clone this repo using the command below: 
   ```
-  git clone https://github.com/brown-ccv/git-trigger-simulation.git
+  git clone https://github.com/<GITHUB-USERNAME>/git-trigger-simulation.git
   ```
+  Note that `<GITHUB-USERNAME>` above can be either your personal GitHub account or an organization for which you have sufficient privileges to create repositories. 
 
-  #### 3. Create a small file using the commands below: 
+  #### 4. Create a small file using the commands below: 
   ```
   cd git-trigger-simulation
   git checkout -b add-small-file 
   echo 'foo' > deleteme.txt 
   ```
 
-  #### 4. Commit the changes to the `add-small-file` branch and push them back to GitHub using the commands below:
+  #### 5. Commit the changes to the `add-small-file` branch and push them back to GitHub using the commands below:
   ```
   git add -A
   git commit -m "build: add new deleteme file"
   git push origin add-small-file 
   ```
 
-  #### 5. Go to GitHub and create a Pull Request from the `add-small-file` branch to the `devel` branch
+  #### 6. Go to GitHub and create a Pull Request from the `add-small-file` branch to the `devel` branch
 
-  #### 6. Merge the Pull Request 
+  #### 7. Merge the Pull Request 
 
 ## Manually Trigger a Build and Simulation
 Now that we have merged our changes to the `devel` branch, we can manually trigger a build by running the following command from the top-level of this repo on Oscar. 
@@ -55,7 +57,7 @@ Now that we have merged our changes to the `devel` branch, we can manually trigg
 The above script will perform several operations. First, it switches branches to the `devel` branch of our repo. Next, it pulls in the changes (if any) that were made to the `devel` branch on the remote repo. Finally, it checks whether there have been any _new_ commits merged in to `devel` that have included `"build:"` at the start of the commit message. And if there _have_ been new commits that include `"build:"` as part of the commit message, the script above proceeds to re-compile our code, and run the resulting executable using SLURM.
 
 ### Importance of `logs/previous_build_hashes.txt` File
-In the above section, you might have noticed that we only rebuild and run our simulation when there are **_new_** commits merged into the `devel` branch. The script above knows that a commit is _new_ if that commit's hash does not appear in the `logs/previous_build_hashes.txt` file. Therefore, this text file is essential to the proper functioning of this repo's building behavior. Before any new build and simulation takes places our script above checks if we've already built and run that commit's code; and if we have, it doesn't rebuild or re-run the simulation. But if we haven't built and run from the commit, then we proceed to do so, and once complete, we add the commit's hash to the `logs/previous_build_hashes.txt` file.  
+In the above section, you might have noticed that we only rebuild and run our simulation when there are **new** commits merged into the `devel` branch. The script above knows that a commit is _new_ if that commit's hash does not appear in the `logs/previous_build_hashes.txt` file. Therefore, this text file is essential to the proper functioning of this repo's building behavior. Before any new build and simulation takes place, our script above checks if we've already built and run that commit's code; and if we have, it doesn't rebuild or re-run the simulation. But if we haven't built and run from the commit, then we proceed to do so, and once complete, we add the commit's hash to the `logs/previous_build_hashes.txt` file.  
 
 ## Automating with Cron Job
 Finally, we move on to set up a cron job that will run the `scripts/rebuild_if_needed.sh` script every 5 minutes.
