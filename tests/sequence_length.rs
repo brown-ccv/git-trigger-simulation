@@ -13,4 +13,8 @@ fn sequence_lengths_are_correct() {
     assert_eq!(get_sequence_length(10), 7);
     assert_eq!(get_sequence_length(20), 8);
 
+    assert_eq!(get_sequence_length(1), 1);
+    assert_eq!(get_sequence_length(40), 9);
+    assert_eq!(get_sequence_length(80), 10);
+    assert_eq!(get_sequence_length(160), 11);
 }
