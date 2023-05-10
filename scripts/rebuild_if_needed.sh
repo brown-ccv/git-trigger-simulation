@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 git checkout devel
-git pull origin devel
+git pull origin devel; echo "git pull exit code: ${?}"
 
 NUM_COMMITS_TO_CHECK=20
 
