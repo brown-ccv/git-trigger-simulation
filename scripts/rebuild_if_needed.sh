@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e 
-
 git checkout devel
 git pull origin devel; echo "git pull exit code: ${?}"
 
