@@ -22,3 +22,15 @@ pub fn collatz(mut n: u32) -> Vec<u32> {
     collatz_sequence
 }
 
+
+#[cfg(test)]
+mod tests {
+    use super::collatz;
+
+    #[test]
+    fn collatz_return_vec() {
+        let collatz_seq = collatz(100_000_000);
+
+        assert!(collatz_seq.len() > 0);
+    }
+}
