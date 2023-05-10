@@ -4,6 +4,10 @@
 
 pub fn collatz(mut n: u32) -> Vec<u32> {
 
+    if n == 0 {
+        panic!("Starting value of `n` cannot be equal to zero!");
+    }
+
     let mut collatz_sequence = vec![n]; // initialize the vector with the starting number
     
     while n != 1 {
