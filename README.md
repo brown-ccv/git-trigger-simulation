@@ -18,7 +18,7 @@ This example is meant to be used on the Oscar supercomputer at Brown. However, i
 
 # Instructions
 
-**Note:** The instructions the follow pre-suppose that the user has access to the `brown-ccv` GitHub organization, and sufficient permisions on this repo. If that is not the case, then one should begin by first forking this repo to your personal GitHub or your organization's GitHub. 
+**Note:** The instructions that follow pre-suppose that the user has access to the `brown-ccv` GitHub organization, and sufficient permisions on this repo. If that is not the case, then one should begin by first forking this repo to your personal GitHub or your organization's GitHub. 
 
 We begin by cloning this repo to Oscar. We will then create a new feature branch called `add-small-file` and proceed to make a small change. Next, we commit the change to our new branch and push to GitHub. After that, we submit a Pull Request on GitHub from `add-small-file` to the `devel` branch. Once that PR is merged into the `devel` branch, we will manually run the `scripts/rebuild_if_needed.sh` script. This should trigger a build and model run executed by SLURM. 
 
