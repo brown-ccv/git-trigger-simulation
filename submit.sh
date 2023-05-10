@@ -11,4 +11,5 @@
 
 module load rust/1.69.0
 
+cargo test
 cargo run --release
