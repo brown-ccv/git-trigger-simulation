@@ -28,19 +28,23 @@ We're going to begin by cloning this repository. We will then proceed to make a 
   #### 3. Create a small file using the commands below: 
   ```
   cd git-trigger-simulation
-  git checkout devel
+  git checkout -b add-small-file 
   echo 'foo' > deleteme.txt 
   ```
 
-  #### 4. Commit the changes to the `devel` branch and push them back to GitHub using the commands below:
+  #### 4. Commit the changes to the `add-small-file` branch and push them back to GitHub using the commands below:
   ```
   git add -A
   git commit -m "build: add new deleteme file"
-  git push origin devel
+  git push origin add-small-file 
   ```
 
+  #### 5. Go to GitHub and create a Pull Request from the `add-small-file` branch to the `devel` branch
+
+  #### 6. Merge the Pull Request 
+
 ## Manually Trigger a Build and Simulation
-Now that we have pushed changes to the `devel` branch, we can manually trigger a build by running the following command from the top-level of this repo on Oscar. 
+Now that we have merged our changes to the `devel` branch, we can manually trigger a build by running the following command from the top-level of this repo on Oscar. 
 
 ```
 ./scripts/rebuild_if_needed.sh
