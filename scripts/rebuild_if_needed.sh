@@ -11,7 +11,7 @@ LAST_BUILD_COMMIT=`git --no-pager log --pretty=oneline -n $NUM_COMMITS_TO_CHECK 
 grep -q $LAST_BUILD_COMMIT ./logs/previous_build_hashes.txt
 GREP_EXIT_STATUS=$? # get grep exit status, which will be `0` if it found LAST_BUILD_COMMIT 
 
-echo "The last build hash is: $LAST_BUILD_COMMIT" 
+echo "The last commit hash is: $LAST_BUILD_COMMIT" 
 
 if [ $GREP_EXIT_STATUS -ne 0 ]; then
     echo "We need to rebuild!!"
