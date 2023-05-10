@@ -18,21 +18,21 @@ This example is meant to be used on the Oscar supercomputer at Brown. However, i
 We're going to begin by cloning this repository. We will then proceed to make a small change to the repo, and then commit that change to the `devel` branch and push that to GitHub. After that, we will manually run the `scripts/rebuild_if_needed.sh` script. This should trigger a build and model run executed by Slurm. Finally, we move on to set up a cron job that will run the `scripts/rebuild_if_needed.sh` script every 15 minutes.
 
 
-  1. Log on to Oscar and open a terminal session.
+  #### 1. Log on to Oscar and open a terminal session.
   
-  2. Clone this repo using the command below: 
+  #### 2. Clone this repo using the command below: 
   ```
   git clone https://github.com/brown-ccv/git-trigger-simulation.git
   ```
 
-  3. Make a small edit to the `README.md` file using the commands below: 
+  #### 3. Make a small edit to the `README.md` file using the commands below: 
   ```
   cd git-trigger-simulation
   git checkout devel
   echo 'foo' >> README.md
   ```
 
-  4. Commit the changes to the `devel` branch and push them back to GitHub using the commands below:
+  #### 4. Commit the changes to the `devel` branch and push them back to GitHub using the commands below:
   ```
   git add -A
   git commit -m "build: updated the readme file"
