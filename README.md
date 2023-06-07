@@ -61,3 +61,11 @@ In the above section, you might have noticed that we only rebuild and run our si
 
 ## Automating with Cron Job
 Finally, we move on to set up a cron job that will run the `scripts/rebuild_if_needed.sh` script every 5 minutes.
+
+This is done by opening your crontab editor using `crontab -e` and then placing something like the following line in that file:
+
+```
+*/5 * * * * /users/pstey/projects/git-trigger-simulation/scripts/rebuild_if_needed.sh >> /users/pstey/projects/git-trigger-simulation/cron.log 2>&1
+```
+
+Note that the path `/users/pstey/projects...` above will need to be changed to reflect your own account on Oscar and the path to the directory.
